@@ -1,0 +1,30 @@
+[
+    {
+        "model": "portfolio.tecnologia",
+        "pk": 1,
+        "fields": {
+            "nome": "Python"
+        }
+    },
+    {
+        "model": "portfolio.tecnologia",
+        "pk": 2,
+        "fields": {
+            "nome": "Django"
+        }
+    },
+    {
+        "model": "portfolio.tecnologia",
+        "pk": 3,
+        "fields": {
+            "nome": "HTML"
+        }
+    },
+    {
+        "model": "portfolio.tecnologia",
+        "pk": 4,
+        "fields": {
+            "nome": "CSS"
+        }
+    }
+]

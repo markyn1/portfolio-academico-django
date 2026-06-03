@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Projetos{% endblock %}
+
+{% block content %}
+<h1>Projetos Acadêmicos</h1>
+
+<form method="get">
+    <input type="text" name="busca" placeholder="Buscar por título..." value="{{ busca }}">
+    <button type="submit">Buscar</button>
+</form>
+
+<hr>
+
+{% for projeto in projetos %}
+    <div class="card">
+        <h2>{{ projeto.titulo }}</h2>
+        <p>{{ projeto.descricao|truncatechars:120 }}</p>
+        <p><strong>Disciplina:</strong> {{ projeto.disciplina }}</p>
+        <p><strong>Status:</strong> {{ projeto.get_status_display }}</p>
+        <p><strong>Autor:</strong> {{ projeto.autor.username }}</p>
+
+        <p>
+            {% for tecnologia in projeto.tecnologias.all %}
+                <span class="badge">{{ tecnologia.nome }}</span>
+            {% empty %}
+                <span>Nenhuma tecnologia cadastrada.</span>
+            {% endfor %}
+        </p>
+
+        <a href="{% url 'portfolio:detalhe_projeto' projeto.pk %}">Ver detalhes</a>
+    </div>
+{% empty %}
+    <p>Nenhum projeto encontrado.</p>
+{% endfor %}
+{% endblock %}

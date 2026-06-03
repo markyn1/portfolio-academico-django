@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Excluir Projeto{% endblock %}
+
+{% block content %}
+<h1>Excluir Projeto</h1>
+
+<p>Tem certeza que deseja excluir o projeto "{{ projeto.titulo }}"?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar exclusão</button>
+</form>
+{% endblock %}
