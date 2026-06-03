@@ -5,6 +5,8 @@
 {% block content %}
 <h1>{{ titulo_pagina }}</h1>
 
+{% include 'accounts/form_errors.html' %}
+
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

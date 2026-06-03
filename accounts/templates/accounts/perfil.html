@@ -1,16 +1,40 @@
 {% extends 'base.html' %}
 
-{% block title %}Perfil{% endblock %}
+{% block title %}{% if is_meu_perfil %}Meu Perfil{% else %}Perfil de {{ perfil_usuario.username }}{% endif %}{% endblock %}
 
 {% block content %}
-<h1>Meu Perfil</h1>
+<h1>{% if is_meu_perfil %}Meu Perfil{% else %}Perfil de {{ perfil_usuario.first_name|default:perfil_usuario.username }}{% endif %}</h1>
 
-<p><strong>Nome:</strong> {{ user.first_name }}</p>
-<p><strong>Usuário:</strong> {{ user.username }}</p>
-<p><strong>E-mail:</strong> {{ user.email }}</p>
-<p><strong>Curso:</strong> {{ profile.curso }}</p>
-<p><strong>Matrícula:</strong> {{ profile.matricula }}</p>
-<p><strong>Bio:</strong> {{ profile.bio }}</p>
+<p><strong>Nome:</strong> {{ perfil_usuario.first_name|default:"—" }}</p>
+<p><strong>Usuário:</strong> {{ perfil_usuario.username }}</p>
+{% if is_meu_perfil %}
+    <p><strong>E-mail:</strong> {{ perfil_usuario.email }}</p>
+{% endif %}
+<p><strong>Curso:</strong> {{ profile.curso|default:"—" }}</p>
+<p><strong>Matrícula:</strong> {{ profile.matricula|default:"—" }}</p>
+<p><strong>Bio:</strong> {{ profile.bio|default:"—" }}</p>
 
-<a href="{% url 'accounts:editar_perfil' %}">Editar perfil</a>
+{% if is_meu_perfil %}
+    <a href="{% url 'accounts:editar_perfil' %}">Editar perfil</a>
+{% endif %}
+
+<hr>
+
+<h2>{% if is_meu_perfil %}Meus projetos{% else %}Projetos publicados{% endif %}</h2>
+
+{% for projeto in projetos %}
+    <div class="card">
+        <h3>{{ projeto.titulo }}</h3>
+        <p><strong>Disciplina:</strong> {{ projeto.disciplina }}</p>
+        <p><strong>Status:</strong> {{ projeto.get_status_display }}</p>
+        <a href="{% url 'portfolio:detalhe_projeto' projeto.pk %}">Ver detalhes</a>
+    </div>
+{% empty %}
+    {% if is_meu_perfil %}
+        <p>Você ainda não cadastrou nenhum projeto.</p>
+        <a href="{% url 'portfolio:criar_projeto' %}">Criar primeiro projeto</a>
+    {% else %}
+        <p>Este usuário ainda não publicou projetos.</p>
+    {% endif %}
+{% endfor %}
 {% endblock %}

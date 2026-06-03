@@ -19,6 +19,9 @@ def lista_projetos_view(request):
         'busca': busca
     })
 
+def get_user_projects(user):
+    return Projeto.objects.filter(autor=user).order_by('-data_criacao')
+
 
 @login_required
 def detalhe_projeto_view(request, pk):
@@ -44,6 +47,10 @@ def criar_projeto_view(request):
 
             messages.success(request, 'Projeto criado com sucesso.')
             return redirect('portfolio:lista_projetos')
+        messages.error(
+            request,
+            'Não foi possível salvar o projeto. Verifique os campos destacados.'
+        )
     else:
         form = ProjetoForm()
 
@@ -76,6 +83,10 @@ def editar_projeto_view(request, pk):
 
             messages.success(request, 'Projeto atualizado com sucesso.')
             return redirect('portfolio:detalhe_projeto', pk=projeto.pk)
+        messages.error(
+            request,
+            'Não foi possível atualizar o projeto. Verifique os campos destacados.'
+        )
     else:
         tecnologias_iniciais = ', '.join(
             projeto.tecnologias.values_list('nome', flat=True)

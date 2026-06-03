@@ -29,7 +29,7 @@ class Projeto(models.Model):
         related_name='projetos'
     )
     titulo = models.CharField(max_length=100)
-    descricao = models.TextField(validators=[MinLengthValidator(30)])
+    descricao = models.TextField(validators=[MinLengthValidator(10)])
     disciplina = models.CharField(max_length=100)
     semestre = models.CharField(max_length=20)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)

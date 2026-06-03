@@ -5,6 +5,9 @@
 {% block content %}
 <h1>Editar Perfil</h1>
 
+{% include 'accounts/form_errors.html' with form=user_form %}
+{% include 'accounts/form_errors.html' with form=profile_form %}
+
 <form method="post">
     {% csrf_token %}
     {{ user_form.as_p }}

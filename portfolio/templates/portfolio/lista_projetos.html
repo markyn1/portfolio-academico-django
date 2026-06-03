@@ -18,7 +18,9 @@
         <p>{{ projeto.descricao|truncatechars:120 }}</p>
         <p><strong>Disciplina:</strong> {{ projeto.disciplina }}</p>
         <p><strong>Status:</strong> {{ projeto.get_status_display }}</p>
-        <p><strong>Autor:</strong> {{ projeto.autor.username }}</p>
+        <p><strong>Autor:</strong>
+            <a href="{% url 'accounts:perfil_publico' projeto.autor.username %}">{{ projeto.autor.username }}</a>
+        </p>
 
         <p>
             {% for tecnologia in projeto.tecnologias.all %}

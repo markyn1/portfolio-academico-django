@@ -5,6 +5,10 @@ from .models import Profile
 
 
 class RegistroForm(UserCreationForm):
+    error_messages = {
+        'password_mismatch': 'As senhas informadas não coincidem.',
+    }
+
     first_name = forms.CharField(
         label='Nome',
         max_length=150
@@ -60,6 +64,15 @@ class RegistroForm(UserCreationForm):
 
         self.fields['password2'].error_messages = {
             'required': 'Confirme a senha.',
+        }
+
+        self.fields['first_name'].error_messages = {
+            'required': 'Informe seu nome.',
+        }
+
+        self.fields['email'].error_messages = {
+            'required': 'Informe um e-mail.',
+            'invalid': 'Informe um e-mail válido.',
         }
 
 

@@ -1,30 +1,300 @@
 [
     {
-        "model": "portfolio.tecnologia",
+        "model": "auth.user",
         "pk": 1,
         "fields": {
-            "nome": "Python"
+            "password": "pbkdf2_sha256$1200000$1oB19feXbdrHZqxT8KXOvZ$lM9pJ/4kuGjKGoqgPwkluGqdKhiZCNtOhjnzf/S75eo=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "demo",
+            "first_name": "Usuário",
+            "last_name": "Demonstração",
+            "email": "demo@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2026-01-15T12:00:00Z",
+            "groups": [],
+            "user_permissions": []
         }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$1200000$1oB19feXbdrHZqxT8KXOvZ$lM9pJ/4kuGjKGoqgPwkluGqdKhiZCNtOhjnzf/S75eo=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "ana.silva",
+            "first_name": "Ana",
+            "last_name": "Silva",
+            "email": "ana.silva@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-08-20T09:00:00Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$1200000$1oB19feXbdrHZqxT8KXOvZ$lM9pJ/4kuGjKGoqgPwkluGqdKhiZCNtOhjnzf/S75eo=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "joao.santos",
+            "first_name": "João",
+            "last_name": "Santos",
+            "email": "joao.santos@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-09-05T14:30:00Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$1200000$1oB19feXbdrHZqxT8KXOvZ$lM9pJ/4kuGjKGoqgPwkluGqdKhiZCNtOhjnzf/S75eo=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "maria.oliveira",
+            "first_name": "Maria",
+            "last_name": "Oliveira",
+            "email": "maria.oliveira@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-10-12T11:15:00Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "accounts.profile",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "curso": "Bacharelado em Sistemas de Informação",
+            "matricula": "20240001",
+            "bio": "Estudante do IFSE Campus Lagarto, com interesse em desenvolvimento web e projetos acadêmicos colaborativos. Este perfil faz parte dos dados de demonstração do trabalho de Programação Web I."
+        }
+    },
+    {
+        "model": "accounts.profile",
+        "pk": 2,
+        "fields": {
+            "user": 2,
+            "curso": "Bacharelado em Sistemas de Informação",
+            "matricula": "20240018",
+            "bio": "Desenvolvedora em formação, focada em front-end e experiência do usuário. Participa de projetos interdisciplinares e documenta entregas em repositórios Git públicos."
+        }
+    },
+    {
+        "model": "accounts.profile",
+        "pk": 3,
+        "fields": {
+            "user": 3,
+            "curso": "Bacharelado em Sistemas de Informação",
+            "matricula": "20240027",
+            "bio": "Entusiasta de APIs e integração de sistemas. Já atuou em projetos de extensão e busca consolidar portfólio acadêmico com aplicações Django e boas práticas de segurança."
+        }
+    },
+    {
+        "model": "accounts.profile",
+        "pk": 4,
+        "fields": {
+            "user": 4,
+            "curso": "Bacharelado em Sistemas de Informação",
+            "matricula": "20240035",
+            "bio": "Interesse em mobile e web responsivo. Costuma liderar a parte de documentação e testes manuais nos trabalhos em grupo da graduação."
+        }
+    },
+    {
+        "model": "portfolio.tecnologia",
+        "pk": 1,
+        "fields": { "nome": "Python" }
     },
     {
         "model": "portfolio.tecnologia",
         "pk": 2,
-        "fields": {
-            "nome": "Django"
-        }
+        "fields": { "nome": "Django" }
     },
     {
         "model": "portfolio.tecnologia",
         "pk": 3,
-        "fields": {
-            "nome": "HTML"
-        }
+        "fields": { "nome": "HTML" }
     },
     {
         "model": "portfolio.tecnologia",
         "pk": 4,
+        "fields": { "nome": "CSS" }
+    },
+    {
+        "model": "portfolio.tecnologia",
+        "pk": 5,
+        "fields": { "nome": "JavaScript" }
+    },
+    {
+        "model": "portfolio.tecnologia",
+        "pk": 6,
+        "fields": { "nome": "SQLite" }
+    },
+    {
+        "model": "portfolio.tecnologia",
+        "pk": 7,
+        "fields": { "nome": "Git" }
+    },
+    {
+        "model": "portfolio.tecnologia",
+        "pk": 8,
+        "fields": { "nome": "Bootstrap" }
+    },
+    {
+        "model": "portfolio.tecnologia",
+        "pk": 9,
+        "fields": { "nome": "PostgreSQL" }
+    },
+    {
+        "model": "portfolio.tecnologia",
+        "pk": 10,
+        "fields": { "nome": "REST API" }
+    },
+    {
+        "model": "portfolio.projeto",
+        "pk": 1,
         "fields": {
-            "nome": "CSS"
+            "autor": 1,
+            "titulo": "Portfólio Acadêmico Web",
+            "descricao": "Sistema web desenvolvido em Django para cadastro e gestão de projetos acadêmicos, com autenticação de usuários, perfis editáveis, busca por título e controle de acesso para que cada autor gerencie apenas os próprios registros.",
+            "disciplina": "Programação Web I",
+            "semestre": "2026.1",
+            "status": "em_andamento",
+            "repositorio": "https://github.com/exemplo/portfolio-academico",
+            "integrantes": "Marcos Pereira, Márcio Monteiro, Usuário Demonstração",
+            "tecnologias": [1, 2, 3, 4, 6, 7],
+            "data_criacao": "2026-02-01T10:00:00Z",
+            "data_atualizacao": "2026-03-15T16:45:00Z"
+        }
+    },
+    {
+        "model": "portfolio.projeto",
+        "pk": 2,
+        "fields": {
+            "autor": 1,
+            "titulo": "API de Biblioteca Digital",
+            "descricao": "Projeto de API REST para gerenciamento de acervo bibliográfico, empréstimos e histórico por usuário autenticado. Inclui documentação de endpoints, validação de dados e testes manuais com coleção Postman.",
+            "disciplina": "Programação Web I",
+            "semestre": "2025.2",
+            "status": "concluido",
+            "repositorio": "https://github.com/exemplo/api-biblioteca-digital",
+            "integrantes": "Usuário Demonstração, Ana Silva",
+            "tecnologias": [1, 2, 9, 10],
+            "data_criacao": "2025-11-10T14:30:00Z",
+            "data_atualizacao": "2026-01-20T09:15:00Z"
+        }
+    },
+    {
+        "model": "portfolio.projeto",
+        "pk": 3,
+        "fields": {
+            "autor": 2,
+            "titulo": "Painel de Monitoramento Escolar",
+            "descricao": "Aplicação web para visualização de indicadores acadêmicos por turma, com filtros por período e exportação de relatórios simples. Interface responsiva construída com templates Django e estilização em CSS.",
+            "disciplina": "Programação Web I",
+            "semestre": "2026.1",
+            "status": "planejamento",
+            "repositorio": "https://github.com/exemplo/painel-monitoramento-escolar",
+            "integrantes": "Ana Silva, Maria Oliveira, Carlos Mendes",
+            "tecnologias": [1, 2, 3, 4, 5, 8],
+            "data_criacao": "2026-02-18T08:20:00Z",
+            "data_atualizacao": "2026-02-28T11:00:00Z"
+        }
+    },
+    {
+        "model": "portfolio.projeto",
+        "pk": 4,
+        "fields": {
+            "autor": 2,
+            "titulo": "Landing Page Institucional IFSE",
+            "descricao": "Site estático dinâmico para apresentação de cursos e eventos do campus, com formulário de contato validado no servidor e estrutura de templates reutilizáveis para manutenção pelo grupo.",
+            "disciplina": "Design Digital",
+            "semestre": "2025.2",
+            "status": "em_andamento",
+            "repositorio": "https://github.com/exemplo/landing-ifse-lagarto",
+            "integrantes": "Ana Silva, João Santos",
+            "tecnologias": [3, 4, 5, 7, 8],
+            "data_criacao": "2025-10-05T13:00:00Z",
+            "data_atualizacao": "2026-01-30T17:30:00Z"
+        }
+    },
+    {
+        "model": "portfolio.projeto",
+        "pk": 5,
+        "fields": {
+            "autor": 3,
+            "titulo": "Sistema de Reservas de Laboratório",
+            "descricao": "Módulo de agendamento de laboratórios de informática com verificação de conflitos de horário, perfis de coordenador e aluno, e notificações na interface após confirmação da reserva.",
+            "disciplina": "Programação Web I",
+            "semestre": "2025.2",
+            "status": "concluido",
+            "repositorio": "https://github.com/exemplo/reservas-laboratorio",
+            "integrantes": "João Santos, Pedro Alves, Fernanda Lima",
+            "tecnologias": [1, 2, 6, 7, 10],
+            "data_criacao": "2025-09-22T10:15:00Z",
+            "data_atualizacao": "2025-12-18T14:00:00Z"
+        }
+    },
+    {
+        "model": "portfolio.projeto",
+        "pk": 6,
+        "fields": {
+            "autor": 3,
+            "titulo": "Integração SUAP com Dashboard",
+            "descricao": "Protótipo de integração para exibir dados acadêmicos consolidados em dashboard interno. Prevê autenticação, cache simples e camadas separadas entre coleta de dados e apresentação.",
+            "disciplina": "Integração de Sistemas",
+            "semestre": "2026.1",
+            "status": "pausado",
+            "repositorio": "https://github.com/exemplo/suap-dashboard",
+            "integrantes": "João Santos, Ricardo Nunes",
+            "tecnologias": [1, 2, 5, 9, 10],
+            "data_criacao": "2026-01-08T09:45:00Z",
+            "data_atualizacao": "2026-02-10T18:20:00Z"
+        }
+    },
+    {
+        "model": "portfolio.projeto",
+        "pk": 7,
+        "fields": {
+            "autor": 4,
+            "titulo": "App Web de Controle de Estudos",
+            "descricao": "Ferramenta para registro de metas semanais, matérias e carga horária de estudo, com relatórios mensais e interface adaptada para dispositivos móveis.",
+            "disciplina": "Programação Web I",
+            "semestre": "2026.1",
+            "status": "em_andamento",
+            "repositorio": "https://github.com/exemplo/controle-estudos-web",
+            "integrantes": "Maria Oliveira, Beatriz Costa, Lucas Ferreira",
+            "tecnologias": [1, 2, 3, 4, 5, 6],
+            "data_criacao": "2026-02-05T15:30:00Z",
+            "data_atualizacao": "2026-03-01T10:10:00Z"
+        }
+    },
+    {
+        "model": "portfolio.projeto",
+        "pk": 8,
+        "fields": {
+            "autor": 4,
+            "titulo": "Catálogo de Projetos de Extensão",
+            "descricao": "Portal para divulgação de projetos de extensão do campus, com categorias, busca por palavra-chave e páginas de detalhe contendo equipe, objetivos e links para documentação complementar.",
+            "disciplina": "Extensão Universitária",
+            "semestre": "2025.2",
+            "status": "concluido",
+            "repositorio": "https://github.com/exemplo/catalogo-extensao",
+            "integrantes": "Maria Oliveira, Ana Silva, Coordenação de Extensão",
+            "tecnologias": [2, 3, 4, 7, 8, 9],
+            "data_criacao": "2025-08-30T12:00:00Z",
+            "data_atualizacao": "2025-11-25T16:00:00Z"
         }
     }
 ]
