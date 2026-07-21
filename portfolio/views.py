@@ -1,9 +1,13 @@
+import logging
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import ProjetoForm
 from .models import Projeto, Tecnologia
+
+logger = logging.getLogger('portfolio.security')
 
 
 @login_required
@@ -18,6 +22,7 @@ def lista_projetos_view(request):
         'projetos': projetos,
         'busca': busca
     })
+
 
 def get_user_projects(user):
     return Projeto.objects.filter(autor=user).order_by('-data_criacao')
@@ -62,11 +67,8 @@ def criar_projeto_view(request):
 
 @login_required
 def editar_projeto_view(request, pk):
-    projeto = get_object_or_404(Projeto, pk=pk)
-
-    if projeto.autor != request.user:
-        messages.error(request, 'Você não tem permissão para editar este projeto.')
-        return redirect('portfolio:lista_projetos')
+    # RS02 — autorização em nível de objeto (IDOR): 404 se não for o autor
+    projeto = get_object_or_404(Projeto, pk=pk, autor=request.user)
 
     if request.method == 'POST':
         form = ProjetoForm(request.POST, instance=projeto)
@@ -104,14 +106,19 @@ def editar_projeto_view(request, pk):
 
 @login_required
 def excluir_projeto_view(request, pk):
-    projeto = get_object_or_404(Projeto, pk=pk)
-
-    if projeto.autor != request.user:
-        messages.error(request, 'Você não tem permissão para excluir este projeto.')
-        return redirect('portfolio:lista_projetos')
+    # RS02 — autorização em nível de objeto (IDOR): 404 se não for o autor
+    projeto = get_object_or_404(Projeto, pk=pk, autor=request.user)
 
     if request.method == 'POST':
+        titulo = projeto.titulo
         projeto.delete()
+        # RS06 — logging de ação sensível
+        logger.info(
+            'Usuário %s excluiu o projeto "%s" (pk=%s).',
+            request.user.username,
+            titulo,
+            pk,
+        )
         messages.success(request, 'Projeto excluído com sucesso.')
         return redirect('portfolio:lista_projetos')
 

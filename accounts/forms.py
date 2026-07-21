@@ -28,7 +28,7 @@ class RegistroForm(UserCreationForm):
         help_text=(
             '<ul>'
             '<li>Sua senha não pode ser muito parecida com suas informações pessoais.</li>'
-            '<li>Sua senha deve conter pelo menos 8 caracteres.</li>'
+            '<li>Sua senha deve conter pelo menos 10 caracteres.</li>'
             '<li>Sua senha não pode ser uma senha muito comum.</li>'
             '<li>Sua senha não pode ser totalmente numérica.</li>'
             '</ul>'

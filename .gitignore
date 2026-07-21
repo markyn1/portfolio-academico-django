@@ -8,3 +8,6 @@ db.sqlite3
 .DS_Store
 media/
 staticfiles/
+logs/*.log
+!logs/.gitkeep
+.coverage

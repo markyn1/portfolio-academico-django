@@ -73,6 +73,26 @@ Acesse: http://127.0.0.1:8000/
 - Não autenticado → redireciona para login
 - Após login → listagem de projetos em `/portfolio/`
 
+### Variáveis de ambiente (segurança — Trabalho 2)
+
+Opcional em desenvolvimento local (valores padrão já permitem `localhost`). Em produção, defina:
+
+| Variável | Padrão (dev) | Descrição |
+|----------|--------------|-----------|
+| `DJANGO_SECRET_KEY` | chave insegura de fallback | Chave secreta do Django |
+| `DJANGO_DEBUG` | `True` | `False` em produção |
+| `DJANGO_ALLOWED_HOSTS` | `localhost,127.0.0.1` | Hosts permitidos (separados por vírgula) |
+
+Exemplo (PowerShell):
+
+```powershell
+$env:DJANGO_SECRET_KEY="sua-chave-secreta-longa"
+$env:DJANGO_DEBUG="False"
+$env:DJANGO_ALLOWED_HOSTS="seusite.com,www.seusite.com"
+```
+
+Relatório de auditoria do Trabalho 2: [`RELATORIO_SEGURANCA.md`](RELATORIO_SEGURANCA.md).
+
 ## Requisitos funcionais implementados
 
 | RF | Descrição | Implementação |
@@ -84,7 +104,7 @@ Acesse: http://127.0.0.1:8000/
 | RF05 | Relacionamento FK/M2M na interface | `autor` → User; `tecnologias` → Tecnologia (badges) |
 | RF06 | Forms com validação personalizada | `clean_*` em `ProjetoForm` e `RegistroForm` |
 | RF07 | Busca/filtro GET na listagem | Parâmetro `busca` em `lista_projetos_view` |
-| RF08 | `@login_required` e edição só pelo autor | Decorators + checagem `projeto.autor` |
+| RF08 | `@login_required` e edição/exclusão só pelo autor (IDOR → 404) | `get_object_or_404(..., autor=request.user)` |
 | RF09 | `base.html`, navegação, Django Messages | `templates/base.html` + `messages` nas views |
 | RF10 | Migrations e dados de exemplo | `migrations/` + `loaddata dados_exemplo` |
 
@@ -98,8 +118,57 @@ Acesse: http://127.0.0.1:8000/
 
 ![Listagem de projetos](docs/screenshots/lista-projetos.png)
 
+## Testes
+
+O projeto possui **53 testes automatizados** em `accounts/tests/`, `portfolio/tests/` e `core/tests/`.
+
+### Executar todos os testes (modo resumido)
+
+```bash
+python manage.py test
+```
+
+### Executar mostrando o nome de cada teste (recomendado para avaliação)
+
+Use `-v 2` para imprimir cada teste na tela enquanto roda:
+
+```bash
+python manage.py test -v 2
+```
+
+Exemplo de saída:
+
+```
+test_registro_post_valido (accounts.tests.test_views.AccountsViewsTests) ... ok
+test_lista_get_200 (portfolio.tests.test_views.PortfolioViewsTests) ... ok
+...
+Ran 53 tests in Xs
+OK
+```
+
+### Testar um módulo específico
+
+```bash
+python manage.py test accounts -v 2
+python manage.py test portfolio -v 2
+python manage.py test core -v 2
+```
+
+### Verificar cobertura de código (meta mínima: **85%**)
+
+```bash
+python -m coverage run manage.py test -v 2
+python -m coverage report
+```
+
+O relatório exibe a porcentagem de linhas cobertas por arquivo (`views.py`, `forms.py`, `models.py`, etc.).
+
+Os testes cobrem models, forms e views dos apps `accounts`, `portfolio` e `core`.
+
 ## Observações
 
 - O cadastro solicita **nome de usuário** além de nome, e-mail e senha (padrão do modelo `User` do Django).
+- Novos cadastros exigem senha com **no mínimo 10 caracteres** (RS03).
 - O arquivo `db.sqlite3` não deve ser versionado (está no `.gitignore`); use `migrate` + `loaddata` em cada máquina.
+- Logs de exclusão ficam em `logs/seguranca.log` (o arquivo de log não é versionado).
 - Para gerar `requirements.txt` atualizado: `pip freeze > requirements.txt`

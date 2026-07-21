@@ -1,0 +1,15 @@
+[run]
+source = accounts, portfolio, core
+omit =
+    */migrations/*
+    */tests/*
+    manage.py
+    */wsgi.py
+    */asgi.py
+    */apps.py
+    */admin.py
+
+[report]
+fail_under = 85
+show_missing = True
+skip_empty = True
